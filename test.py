@@ -25,8 +25,8 @@ print(byte_array)
 # print(cSum)
 testing2 = XBeePacket(2)
 header = [0x83, 0x56, 0x78, 0x24, 0x00, 0x01, 0x02, 0x00, 0x03, 0xff, 0x85]
-packet = testing2.create_packet(header, 2)
+# packet = testing2.create_packet(header, 2)
 
-checker = APIFrame(packet)
+checker = APIFrame(header)
 checker.verify()
 print(checker.verify)
