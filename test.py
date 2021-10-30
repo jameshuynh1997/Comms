@@ -2,6 +2,8 @@ from digi.xbee.devices import XBeeDevice
 from digi.xbee.packets.base import XBeePacket
 from digi.xbee.models.mode import OperatingMode
 import struct
+from XBeePacket import XBeePacket
+from checksum import APIFrame
 
 device1 = XBeeDevice("COM5", 9600)
 device1.open()
@@ -11,7 +13,7 @@ device1.open()
 # device1.close()
 
 # data = struct.pack("2i?", 40, 26, True)
-data = [2,3,4]
+data = [2, 3, 4]
 byte_array = bytearray(data)
 print(byte_array)
 # opMode = OperatingMode.ESCAPED_API_MODE
@@ -20,4 +22,11 @@ print(byte_array)
 
 # cSum = packet.get_checksum()
 
-#print(cSum)
+# print(cSum)
+testing2 = XBeePacket(2)
+header = struct.pack("4i", 1, 2, 3, 4)
+packet = testing2.create_packet(header, 2)
+
+checker = APIFrame(packet)
+checker.verify()
+print(checker.verify)
