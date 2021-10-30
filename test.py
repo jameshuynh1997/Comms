@@ -24,7 +24,7 @@ print(byte_array)
 
 # print(cSum)
 testing2 = XBeePacket(2)
-header = struct.pack("4i", 1, 2, 3, 4)
+header = [0x83, 0x56, 0x78, 0x24, 0x00, 0x01, 0x02, 0x00, 0x03, 0xff, 0x85]
 packet = testing2.create_packet(header, 2)
 
 checker = APIFrame(packet)

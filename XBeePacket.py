@@ -5,6 +5,8 @@ from digi.xbee.packets.aft import ApiFrameType
 
 
 class XBeePacket(XBeeAPIPacket):
+    __MIN_PACKET_LENGTH = 8
+
     def __init__(self, op_mode=OperatingMode.API_MODE):
         """
         Class constructor. Instantiates a new :class:`.XBeePacket` object.
