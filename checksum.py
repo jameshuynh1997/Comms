@@ -1,5 +1,5 @@
 import struct
-from xbee.python2to3 import byteToInt, intToByte
+from python2to3 import byteToInt, intToByte
 
 
 class APIFrame:
@@ -28,7 +28,7 @@ class APIFrame:
             total += byteToInt(byte)
 
         # Add checksum too
-        total += byteToInt(chksum)
+        total += byteToInt(checksum)
 
         # Only keep low bits
         total &= 0xFF
