@@ -6,7 +6,7 @@ import struct
 import time
 
 # Connect local device and open communication link 
-device = DigiMeshDevice("COM6", 9600)
+device = DigiMeshDevice("/dev/ttyUSB0", 9600)
 device.open()
 
 # discover other devices on the network
@@ -15,6 +15,7 @@ network.start_discovery_process()
 
 while network.is_discovery_running(): 
     time.sleep(0.01)
+
 
 devices = {dev.get_node_id():dev._64bit_addr for dev in network.get_devices()} # assign each node id with their respective 64 bit addr
 devices[device.get_node_id()] = device._64bit_addr # assign the locally connected XBee to its 64 bit addr
@@ -30,7 +31,5 @@ print(devices)
 # basic but shows on XCTU
 device.send_data_broadcast("Hello this is from GCS!")
 device.close()
-
-
 
 
